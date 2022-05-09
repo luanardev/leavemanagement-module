@@ -1,6 +1,6 @@
 {
     "name": "luanardev/leavemanagement-module",
-    "type": "laravel-module"
+    "type": "laravel-module",
     "description": "Lumis Leave Management Module",
     "license": "MIT",
     "authors": [
