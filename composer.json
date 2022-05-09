@@ -1,0 +1,25 @@
+{
+    "name": "luanardev/leavemanagement-module",
+    "description": "Lumis Leave Management Module",
+    "authors": [
+        {
+            "name": "Noel Ngóna",
+            "email": "noelngóna@luanar.ac.mw"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+				"Luanardev\\Modules\\LeaveManagement\\Providers\\LeaveManagementServiceProvider"
+			],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Luanardev\\Modules\\LeaveManagement\\": ""
+        }
+    }
+}

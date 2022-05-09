@@ -1,0 +1,13 @@
+{
+    "name": "LeaveManagement",
+    "alias": "leavemanagement",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Luanardev\\Modules\\LeaveManagement\\Providers\\LeaveManagementServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
