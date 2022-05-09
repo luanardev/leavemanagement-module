@@ -1,6 +1,7 @@
 {
     "name": "luanardev/leavemanagement-module",
     "description": "Lumis Leave Management Module",
+    "license": "MIT",
     "authors": [
         {
             "name": "Brian Simpokolwe",
