@@ -25,4 +25,11 @@ class Leave extends Model
     {
         return $this->belongsTo(LeaveCategory::class, 'leave_category_id');
     }
+
+    public function showPendingApplications($empolyee_id){
+        return $this->where('employee_id', 'employee_id')->andWhere('status', 'pending')->get();
+    }
+    public function showCompletedApplications(){
+
+    }
 }

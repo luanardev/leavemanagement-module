@@ -5,11 +5,8 @@ namespace Luanardev\Modules\LeaveManagement\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
-use Luanardev\Modules\LeaveManagement\Entities\LeaveCategory;
-use Luanardev\Modules\LeaveManagement\Entities\Leave;
 
-class LeaveManagementController extends Controller
+class LeaveController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,6 @@ class LeaveManagementController extends Controller
      */
     public function index()
     {
-       
-        
         return view('leavemanagement::index');
     }
 
@@ -28,9 +23,7 @@ class LeaveManagementController extends Controller
      */
     public function create()
     {
-        $leave_categories = LeaveCategory::all();
-        //dd($leave_categories);
-        return view('leavemanagement::client.create')->with(['leave_categories' => $leave_categories]);
+        return view('leavemanagement::create');
     }
 
     /**
@@ -40,14 +33,7 @@ class LeaveManagementController extends Controller
      */
     public function store(Request $request)
     {
-        $employee_id = Auth::user()->id;
-        $leave = new Leave();
-        $leave->employee_id = $employee_id;
-        $leave->start_date = $request->start_date;
-        $leave->end_date = $request->end_date;
-        $leave->leave_category_id = $request->category;
-        $leave->save();
-
+        //
     }
 
     /**

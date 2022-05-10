@@ -4,6 +4,9 @@
     "configurable": false,
 
     "permissions": [
-        
+        "create_leave",
+        "view_leave",
+        "update_leave",
+        "delete_leave"
     ]
 }

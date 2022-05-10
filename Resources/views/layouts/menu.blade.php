@@ -6,3 +6,13 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{route('leavemanagement.create')}}" class="nav-link">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Apply For Leave</p>
+    </a>
+</li>
+
+
+
+

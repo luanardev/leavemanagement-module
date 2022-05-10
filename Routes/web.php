@@ -19,6 +19,8 @@ Route::prefix('leavemanagement')->group(function() {
         Route::get('/', function(){
             return "Client Panel";
         });
+        Route::get('/', 'LeaveManagementController@create')->name('leavemanagement.create');
+        Route::post('apply', 'LeaveManagementController@store')->name('leavemanagement.apply');
     });
 
     Route::prefix('admin')->group(function(){

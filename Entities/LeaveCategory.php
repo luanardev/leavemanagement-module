@@ -10,6 +10,8 @@ class LeaveCategory extends Model
     use HasFactory;
 
     protected $fillable = [];
+
+    protected $table = 'hrm_leave_category';
     
     protected static function newFactory()
     {
