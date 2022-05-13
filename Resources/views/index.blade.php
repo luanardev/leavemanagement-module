@@ -1,57 +1,100 @@
 @extends('leavemanagement::layouts.app')
 
 @section('content')
-<section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                <h3 class="card-title">Bordered Table</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th style="width: 10px">#</th>
-                        <th>Leave Type</th>
-                        <th>Date Applied</th>
-                        <th>Current Stage</th>
-                        <th style="width: 40px">Label</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1.</td>
-                        <td>Update software</td>
-                        <td>
-                        <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                        </td>
-                        <td><span class="badge bg-danger">55%</span></td>
-                    </tr>
-                    </tbody>
-                </table>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
-                </div>
-            </div>
-            <!-- /.card -->
-        
-            </div>
-        </div>
-    </div>
-</section>
 
+@if ($leaves->count() > 0)
+
+
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Leave Applications</h1>
+          </div>
+          
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Leave Applications</h3>
+
+          
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects">
+              <thead>
+                  <tr>
+                      <th >
+                          #
+                      </th>
+                      <th >
+                          Leave Type
+                      </th>
+                      <th>
+                          Date Applied
+                      </th>
+                      <th>
+                          Current Stage
+                      </th>
+                      <th>
+                          Progress Level
+                      </th>
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                @foreach ($leaves as $leave)
+                  <tr onclick="window.location='{{route('leavemanagement.client.pending.view', ['leave_id' => $leave->id])}}';">
+                      
+                      <td>
+                          1
+                      </td>
+                      <td>
+                        {{$leave->category->name}}
+                      </td>
+                      <td>
+                        {{$leave->created_at->format('g:ia \o\n l jS F Y')}}
+                      </td>
+                      <td class="project_progress">
+                          {{ $leave->status == 'rejected' ? 'Rejected by' : ""}}
+                        {{$leave->level->name}}
+                      </td>
+                      <td class="project_progress" >
+                        <div class="progress progress-sm">
+                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{$leave->completion_level()}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$leave->completion_level()}}%">
+                            </div>
+                        </div>
+                        <small>
+                            {{$leave->completion_level()}}% Complete
+                        </small>
+                      </td>
+                     
+                  </tr>
+                  @endforeach
+              </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+ 
+
+ 
+@else
+<div class="alert alert-danger" role="alert">
+    You have no leave requests
+  </div>
+@endif
     
 @endsection

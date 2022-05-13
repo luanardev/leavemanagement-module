@@ -18,6 +18,7 @@ class CreateLeaveApprovalsTable extends Migration
             $table->bigInteger('leave_id')->unsigned();
             $table->bigInteger('approver_id')->unsigned();           
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending'); 
+            $table->string('comment')->nullable();
             
             $table->timestamps();
 
@@ -28,7 +29,7 @@ class CreateLeaveApprovalsTable extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
+     * @return void 
      */
     public function down()
     {

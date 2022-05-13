@@ -8,8 +8,15 @@
 
 <li class="nav-item">
     <a href="{{route('leavemanagement.create')}}" class="nav-link">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-folder"></i>
         <p>Apply For Leave</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{route('leavemanagement.admin.pending')}}" class="nav-link">
+        <i class="nav-icon fas fa-eye"></i>
+        <p>View Requests</p>
     </a>
 </li>
 

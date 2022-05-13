@@ -9,6 +9,8 @@ class LeaveLevel extends Model
 {
     use HasFactory;
 
+    protected $table = 'hrm_leave_level';
+
     protected $fillable = [];
     
     protected static function newFactory()

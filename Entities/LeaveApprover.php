@@ -15,4 +15,5 @@ class LeaveApprover extends Model
     {
         return \Luanardev\Modules\LeaveManagement\Database\factories\LeaveApproverFactory::new();
     }
+    
 }

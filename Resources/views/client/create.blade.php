@@ -38,6 +38,10 @@
                         <label for="exampleInputEmail1">End Date</label>
                         <input name="end_date" type="date" class="form-control"  placeholder="Enter email" required>
                     </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Summary</label>
+                        <textarea class="form-control" name="summary" id="" cols="30" rows="10" required></textarea>
+                    </div>
                 </div>
             
             </div>
