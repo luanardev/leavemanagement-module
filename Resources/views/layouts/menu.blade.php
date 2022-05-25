@@ -13,13 +13,21 @@
     </a>
 </li>
 
+
 <li class="nav-item">
     <a href="{{route('leavemanagement.admin.pending')}}" class="nav-link">
         <i class="nav-icon fas fa-eye"></i>
-        <p>View Requests</p>
+        <p>View Applications</p>
     </a>
 </li>
 
+
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-eye"></i>
+        <p>My Applications</p>
+    </a>
+</li>
 
 
 

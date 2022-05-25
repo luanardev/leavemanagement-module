@@ -14,7 +14,7 @@ class Leave extends Model
     use HasFactory, 
         BelongsToEmployee;
 
-    protected $table = 'hrm_leaves';
+    protected $table = 'hrm_leave_applications';
 
     protected $fillable = [
         'id', 'employee_id', 'leave_category_id', 'start_date', 'end_date', 'level_id', 'summary'
@@ -64,7 +64,10 @@ class Leave extends Model
         
     }
 
-
+    public static function leavesTaken($financialYear){
+        $emp_id = Auth::user()->getEmployeeId();
+        return SELF::where('employee_id', $emp_id)->where('leave_category_id', 1)->where('financial_year', $financialYear)->sum('days');
+    }
     public static function getSubordinateApplications(){
        $subordinate_ids = Auth::user()->getEmployee()->subordinates()->pluck('employee_id');
         return Leave::where('status',  'pending')->whereIn('employee_id', $subordinate_ids)->get();

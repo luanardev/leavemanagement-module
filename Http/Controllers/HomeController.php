@@ -20,6 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         $employeeId = Auth::user()->getEmployeeId();
+        
         $leaves = Leave::showPendingApplications($employeeId);
         
         return view('leavemanagement::index')->with(['leaves' => $leaves]);

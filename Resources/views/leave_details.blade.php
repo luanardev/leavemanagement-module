@@ -24,7 +24,7 @@
           <h3 class="card-title">Leave Details</h3>
 
           <div class="card-tools">
-            
+            <a href="{{route('leave.admin.history', ['employee_id' => $leave->employee->id])}}" class="btn btn-primary">Leave History</a>
           </div>
         </div>
         <div class="card-body">

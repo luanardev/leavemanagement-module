@@ -29,6 +29,7 @@ Route::prefix('leavemanagement')->group(function() {
     Route::prefix('admin')->group(function(){
         Route::get('/','LeaveController@getPending' )->name('leavemanagement.admin.pending');
         Route::get('/view','LeaveController@viewPending' )->name('leavemanagement.admin.pending.view');
+        Route::get('/view','LeaveController@history' )->name('leave.admin.history');
         Route::post('/approve','LeaveController@approve')->name('leavemanagement.admin.approve');
         Route::post('/disapprove','LeaveController@disapprove' )->name('leavemanagement.admin.disapprove');
     });

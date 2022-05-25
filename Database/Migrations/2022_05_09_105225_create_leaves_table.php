@@ -13,12 +13,14 @@ class CreateLeavesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hrm_leaves', function (Blueprint $table) {
+        Schema::create('hrm_leave_applications', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('employee_id')->unsigned();
+            $table->string('financial_year')->default('2022/23');
             $table->bigInteger('leave_category_id')->unsigned();
             $table->date('start_date');
             $table->date('end_date');
+            $table->bigInteger('days');
             $table->bigInteger('level_id')->unsigned();
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string('summary')->nullable();

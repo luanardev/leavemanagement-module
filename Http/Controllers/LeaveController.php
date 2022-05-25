@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Luanardev\Modules\LeaveManagement\Entities\LeaveCategory;
+use Luanardev\Modules\Employees\Entities\Employee;
 use Luanardev\Modules\LeaveManagement\Entities\Leave;
 use Luanardev\Modules\LeaveManagement\Entities\LeaveApproval;
 
@@ -36,8 +37,21 @@ class LeaveController extends Controller
     public function create()
     {
         $leave_categories = LeaveCategory::all();
-        //dd($leave_categories);
-        return view('leavemanagement::client.create')->with(['leave_categories' => $leave_categories]);
+        $employeeId = Auth::user()->getEmployeeId();
+        $employee = Employee::find($employeeId);
+        $leaves_per_year = $employee->leaveDaysPerYear();
+        $leaves_taken = (int)Leave::leavesTaken('2022/23');
+        return view('leavemanagement::client.create')->with(['leave_categories' => $leave_categories, 'leaves_taken' => $leaves_taken, 'leaves_per_year' => $leaves_per_year]);
+    }
+
+    public function history(Request $request){
+        // $emp_id = $request->employee_id;
+        // $leaves = Leave::where('employee_id', $emp_id)
+        //     ->where('status', 'approved')
+        //     ->orderBy('updated_at')
+        //     ->get();
+
+        // return view('leavemanagement::client.history')->with(['leaves' => $leaves]);
     }
 
     /**
@@ -56,6 +70,7 @@ class LeaveController extends Controller
         $leave->leave_category_id = $request->category;
         $leave->level_id = 1;
         $leave->summary = $request->summary;
+        $leave->days = $request->days;
         $leave->save();
         $employeeId = Auth::user()->getEmployeeId();
         $leaves = Leave::showPendingApplications($employeeId);
